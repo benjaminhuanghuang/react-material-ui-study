@@ -10,9 +10,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 
 //
-import Home from './Components/Home'
-import Dashboard from './Components/Dashboard'
-import About from './Components/About'
+import NavBar from './components/NavBar'
+import Home from './components/Home'
+import Dashboard from './components/Dashboard'
+import About from './components/About'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,17 +32,7 @@ function App() {
 
   return (
     <Router>
-      <AppBar>
-        <Toolbar position="static">
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+      <NavBar/>
       <Switch>
         <Route exact path="/">
           <Home />

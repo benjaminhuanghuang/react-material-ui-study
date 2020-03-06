@@ -1,8 +1,9 @@
 import React from 'react';
+import CourseList from './CourseList'
 
 
 export default () => {
   return (
-    <h1>Home</h1>
+    <CourseList />
   )
 }
