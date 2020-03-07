@@ -1,0 +1,37 @@
+.countdown {
+  border-radius: 1px;
+  color: #000;
+  font-family: resident-secondary-font,Roboto-Regular,arial;
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 16px 0;
+  text-align: center;
+  width: 500px;
+  text-transform: uppercase;
+}
+
+.countdown-label {
+  margin: 0 0 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.countdown-timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0;
+}
+
+.countdown-timer-label {
+  padding: 0 15px 0 0;
+}
+
+.countdown-timer-label .countdown-timer-digit {
+  display: block;
+  font-size: 2.3rem;
+  padding-bottom: 5px;
+}
