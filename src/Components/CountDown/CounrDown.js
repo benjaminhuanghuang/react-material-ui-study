@@ -16,7 +16,6 @@ export default class Timer extends Component {
       const curr = moment()
       const end = moment(this.state.endTime, 'YYYY/MM/DD HH:mm:ss');
       const duration = moment.duration(end.diff(curr));
-      debugger
       this.setState({
         hours: duration.hours(),
         minutes: duration.minutes(),
