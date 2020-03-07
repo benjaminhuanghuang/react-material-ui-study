@@ -7,7 +7,7 @@ export default () => {
   return (
     <>
       <CourseList />
-      <CountDown />
+      <CountDown endTime='2020-03-07 17:00:00'/>
     </>
   )
 }
