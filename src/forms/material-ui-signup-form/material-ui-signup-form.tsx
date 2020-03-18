@@ -4,7 +4,11 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //
-import { FormikField } from "../../components";
+import {
+  MaterialUIFormikField,
+  MaterialUIFormikSelect,
+  FormikSelectItem
+} from "../../components";
 //
 import "./material-ui-signup-form.css";
 
@@ -25,6 +29,24 @@ const SignupSchema = Yup.object().shape({
   position: Yup.string().required("Required")
 });
 
+const positionItems: FormikSelectItem[] = [
+  {
+    label: "Front End",
+    value: "front_end"
+  },
+  {
+    label: "Back End",
+    value: "back_end"
+  },
+  {
+    label: "Dev Ops",
+    value: "dev_ops"
+  },
+  {
+    label: "QA",
+    value: "qa"
+  }
+];
 export const MaterialUISignUpForm: React.FC = () => {
   const handleSubmit = (values: FormValues): void => {};
   return (
@@ -39,25 +61,24 @@ export const MaterialUISignUpForm: React.FC = () => {
         {({ dirty, isValid }) => {
           return (
             <Form>
-              
-            <FormikField label="Name"  name="name"></FormikField>
-            <FormikField label="Email"  name="email"></FormikField>
-            <FormikField label="Password"  name="password" type="password"></FormikField>
-              <div>
-                <label>Poisiton:</label>
-                <Field
-                  name="position"
-                  as="select"
-                  autoComplete="off"
-                  placeholder="Choose your position"
-                >
-                  <option value="front-end">Front End</option>
-                  <option value="back-end">Back End</option>
-                  <option value="dev-ops">Dev Ops</option>
-                  <option value="qa">QA</option>
-                </Field>
-                <ErrorMessage name="position"></ErrorMessage>
-              </div>
+              <MaterialUIFormikField
+                label="Name"
+                name="name"
+              ></MaterialUIFormikField>
+              <MaterialUIFormikField
+                label="Email"
+                name="email"
+              ></MaterialUIFormikField>
+              <MaterialUIFormikField
+                label="Password"
+                name="password"
+                type=" password"
+              ></MaterialUIFormikField>
+              <MaterialUIFormikSelect
+                name="position"
+                label="Position"
+                items={positionItems}
+              ></MaterialUIFormikSelect>
               <button type="submit" disabled={!dirty || isValid}>
                 Submit
               </button>

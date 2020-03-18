@@ -11,7 +11,7 @@ interface FormikFieldProps {
   type?:string
 }
 
-export function FormikField(props: FormikFieldProps) {
+export function MaterialUIFormikField(props: FormikFieldProps) {
   const { name, label , type="text"} = props;
 
   return (
