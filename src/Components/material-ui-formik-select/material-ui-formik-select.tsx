@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 //
 import {
   InputLabel,
@@ -22,20 +22,54 @@ export interface FormikSelectProps {
   items: FormikSelectItem[];
 }
 
-export function MaterialUIFormikSelect(props: FormikSelectProps) {
-  const { name, label, items } = props;
+export interface MaterialUISelectFiedlProps {
+  errorString?: string;
+  children: ReactNode;
+  label: string;
+}
+
+export const MaterialUIFormikSelectField: React.FC<MaterialUISelectFiedlProps> = props => {
+  const { label, children, errorString } = props;
 
   return (
+    <FormControl fullWidth>
+      <InputLabel>{label}</InputLabel>
+      <Select>{children}</Select>
+      <FormHelperText>{errorString}</FormHelperText>
+    </FormControl>
+  );
+};
+
+export const MaterialUIFormikSelect: React.FC<FormikSelectProps> = ({
+  name,
+  items,
+  label
+}) => {
+  return (
     <div className="formik-select">
-      <FormControl fullWidth>
-        <InputLabel>{label}</InputLabel>
-        <Select>
-          {items.map((item: FormikSelectItem) => (
-            <MenuItem key={item.value}>{item.label}</MenuItem>
-          ))}
-        </Select>
-        <FormHelperText>""</FormHelperText>
-      </FormControl>
+      {/* <MaterialUIFormikSelectField label={label} errorString="Test ">
+      {
+        items.map((item)=>(
+          <MenuItem key={item.value} value={item.value}>
+            {item.label}
+          </MenuItem>
+        ))
+      }
+
+      </MaterialUIFormikSelectField> */}
+
+      <Field
+        name={name}
+        as={MaterialUIFormikSelectField}
+        label={label}
+        errorString={<ErrorMessage name={name} />}
+      >
+        {items.map(item => (
+          <MenuItem key={item.value} value={item.value}>
+            {item.label}
+          </MenuItem>
+        ))}
+      </Field>
     </div>
   );
-}
+};
