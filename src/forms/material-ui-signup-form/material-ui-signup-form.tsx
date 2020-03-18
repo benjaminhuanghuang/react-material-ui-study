@@ -4,6 +4,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 //
+import { FormikField } from "../../components";
+//
 import "./material-ui-signup-form.css";
 
 interface FormValues {
@@ -28,6 +30,7 @@ export const MaterialUISignUpForm: React.FC = () => {
   return (
     <div className="form-container">
       <h1>Sign Up</h1>
+
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -36,11 +39,10 @@ export const MaterialUISignUpForm: React.FC = () => {
         {({ dirty, isValid }) => {
           return (
             <Form>
-              <div>
-                <label>Name:</label>
-                <Field name="name" as="input" autoComplete="off"></Field>
-                <ErrorMessage name="name"></ErrorMessage>
-              </div>
+              
+            <FormikField label="Name"  name="name"></FormikField>
+            <FormikField label="Email"  name="email"></FormikField>
+            <FormikField label="Password"  name="password" type="password"></FormikField>
               <div>
                 <label>Poisiton:</label>
                 <Field
@@ -56,7 +58,9 @@ export const MaterialUISignUpForm: React.FC = () => {
                 </Field>
                 <ErrorMessage name="position"></ErrorMessage>
               </div>
-              <button type="submit" disabled={!dirty || isValid}>Submit</button>
+              <button type="submit" disabled={!dirty || isValid}>
+                Submit
+              </button>
             </Form>
           );
         }}

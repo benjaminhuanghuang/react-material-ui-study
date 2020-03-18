@@ -19,7 +19,7 @@ import {
 function App() {
   
   return (
-    <SignUpForm/>
+    <MaterialUISignUpForm/>
   );
 }
 
